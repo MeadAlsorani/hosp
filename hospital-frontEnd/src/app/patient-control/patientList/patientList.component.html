@@ -1,0 +1,42 @@
+<button class="btn btn-primary" routerLink="/add-patient">Add new patient</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fileNo">
+        <th mat-header-cell *matHeaderCellDef> fileNo </th>
+        <td mat-cell *matCellDef="let element"> {{element.fileNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef> birth Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn button-outline-primary" routerLink="/update-patient/{{element.id}}" routerLinkActive="router-link-active">Edit</button>
+            <button class="btn button-outline-danger" (click)="openModal(template,element.id)">Delete</button>
+            <button class="btn button-outline-info">details</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="decline()">No</button>
+    </div>
+</ng-template>

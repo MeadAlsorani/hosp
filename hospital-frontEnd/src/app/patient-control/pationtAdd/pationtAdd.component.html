@@ -1,0 +1,153 @@
+<div class="card col-md-12 p-3 mt-2">
+    <div class="card-header text-center">
+        <h4>Add new Patient</h4>
+    </div>
+    <form [formGroup]="AddForm" (ngSubmit)="AddNewPatient(AddForm.value)" class="text-right">
+        <tabset #FormTabs>
+            <tab heading="Basic Information" id="tab1">
+                <div class="form-group col-12">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" formControlName="name" />
+                    <div *ngIf="!name.valid && name.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="fileNo">File Number</label>
+                    <input type="number" class="form-control" name="fileNo" formControlName="fileNo" />
+                    <div *ngIf="!fileNo.valid && fileNo.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="citizenId">Citizen Id</label>
+                    <input type="number" class="form-control" name="citizenId" formControlName="citizenId" />
+                    <div *ngIf="!citizenId.valid && citizenId.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="birthDate">Birth Date</label>
+                    <input type="text" name="birthDate" formControlName="birthDate" placeholder="Datepicker" class="form-control" bsDatepicker>
+                    <div *ngIf="!birthDate.valid && birthDate.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="firstVisitDate">first Visit Date</label>
+                    <input type="text" name="firstVisitDate" formControlName="firstVisitDate" placeholder="Datepicker" class="form-control" bsDatepicker>
+                    <div *ngIf="!firstVisitDate.valid && firstVisitDate.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <mat-button-toggle-group formControlName="gender" name="gender" [value]="true" class="select-form">
+                        <mat-button-toggle [value]="true" class="select-form">Female</mat-button-toggle>
+                        <mat-button-toggle [value]="false" class="select-form">Male</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div> >
+                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(1)">
+                    Next
+                 </button>
+            </tab>
+
+            <tab heading="Contact">
+                <div class="form-group col-12">
+                    <label for="nationality">Nationality</label>
+                    <input type="number" class="form-control" name="nationality" formControlName="nationality" />
+                    <div *ngIf="!nationality.valid && nationality.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="number" class="form-control" name="phoneNumber" formControlName="phoneNumber" />
+                    <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="email">email</label>
+                    <input type="number" class="form-control" name="email" formControlName="email" />
+                    <div *ngIf="!email.valid && email.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(0)">
+                    Back
+                  </button>
+                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(2)">
+                    Next
+                 </button>
+            </tab>
+
+            <tab heading="Address">
+                <div class="form-group col-12">
+                    <label for="country">country</label>
+                    <input type="number" class="form-control" name="country" formControlName="country" />
+                    <div *ngIf="!country.valid && country.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="street">city</label>
+                    <input type="number" class="form-control" name="street" formControlName="street" />
+                    <div *ngIf="!street.valid && street.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="address1">address 1</label>
+                    <input type="number" class="form-control" name="address1" formControlName="address1" />
+                    <div *ngIf="!address1.valid && address1.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="address2">address 2</label>
+                    <input type="number" class="form-control" name="address2" formControlName="address2" />
+                </div>
+                <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(1)">
+                    Back
+                  </button>
+                <button type="button" class="btn btn-primary btn-md" (click)="selectTab(3)">
+                    Next
+                 </button>
+            </tab>
+            <tab heading="Contact Person">
+                <div class="form-group col-12">
+                    <label for="contactPerson">contact Person</label>
+                    <input type="number" class="form-control" name="contactPerson" formControlName="contactPerson" />
+                    <div *ngIf="!contactPerson.valid && contactPerson.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="contactRelation">contact Relation</label>
+                    <input type="number" class="form-control" name="contactRelation" formControlName="contactRelation" />
+                    <div *ngIf="!contactRelation.valid && contactRelation.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="contactPhone">contact Phone</label>
+                    <input type="number" class="form-control" name="contactPhone" formControlName="contactPhone" />
+                    <div *ngIf="!contactPhone.valid && contactPhone.touched" class="form-validation text-danger">
+                        This filed is required
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="address2">address 2</label>
+                    <input type="number" class="form-control" name="address2" formControlName="address2" />
+                </div>
+                <button type="button" class="btn btn-default btn-md mr-2" (click)="selectTab(2)">
+                  Back
+                </button>
+                <button class="btn btn-success" type="submit">Save</button>
+            </tab>
+        </tabset>
+    </form>
+</div>
